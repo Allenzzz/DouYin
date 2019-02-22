@@ -9,7 +9,7 @@ def video():
     get hot video result
     :return: HotVideo object
     """
-    result = fetch(hot_video_url)
+    result = fetch(hot_video_url).get('data')
     # process json data
     datetime = parse_datetime(result.get('active_time'))
     video_list = result.get('aweme_list', [])

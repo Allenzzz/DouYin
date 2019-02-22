@@ -1,7 +1,7 @@
 import douyin
 
 # HotMusic
-result = douyin.hot.music()
+result = douyin.hot.music('lucas')
 # music objects
 musics = result.data
 # print every music

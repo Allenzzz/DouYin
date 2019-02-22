@@ -20,7 +20,7 @@ def trend():
     offset = 0
     while True:
         query['cursor'] = str(offset)
-        result = fetch(hot_trend_url, headers=common_headers, params=query, verify=False)
+        result = fetch(hot_trend_url, headers=common_headers, params=query, verify=False).get('data')
         category_list = result.get('category_list')
         datetime = parse_datetime(result.get('extra', {}).get('now'))
         final = []

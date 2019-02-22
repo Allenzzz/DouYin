@@ -34,7 +34,7 @@ def data_to_video(data):
     like_count = statistics.get('digg_count')
     comment_count = statistics.get('comment_count')
     share_count = statistics.get('share_count')
-    id = statistics.get('aweme_id')
+    vid = statistics.get('aweme_id')
     desc = data.get('desc')
     is_ads = data.get('is_ads')
     duration = data.get('duration')
@@ -47,7 +47,7 @@ def data_to_video(data):
     music = data_to_music(data.get('music', {}))
     address = data_to_address(data.get('poi_info', {}))
     return Video(
-        id=id,
+        id=vid,
         desc=desc,
         like_count=like_count,
         share_count=share_count,
@@ -62,7 +62,7 @@ def data_to_video(data):
         author=author,
         music=music,
         address=address
-    ) if id else None
+    ) if vid else None
 
 
 def data_to_music(data):
@@ -71,20 +71,20 @@ def data_to_music(data):
     :param data:
     :return:
     """
-    id = data.get('mid')
+    mid = data.get('mid')
     name = data.get('title')
     play_url = get_music_url(data.get('play_url', {}).get('url_list', []))
     owner_id = data.get('owner_id')
     owner_name = data.get('owner_nickname')
     cover_url = first(data.get('cover_large', {}).get('url_list', []))
     return Music(
-        id=id,
+        id=mid,
         name=name,
         play_url=play_url,
         owner_id=owner_id,
         owner_name=owner_name,
         cover_url=cover_url
-    ) if id else None
+    ) if mid else None
 
 
 def data_to_user(data):
@@ -94,7 +94,7 @@ def data_to_user(data):
     :return:
     """
     alias = data.get('unique_id') or data.get('short_id')
-    id = data.get('uid')
+    uid = data.get('uid')
     name = data.get('nickname')
     sign = data.get('signature')
     avatar = first(data.get('avatar_larger', {}).get('url_list', []))
@@ -104,7 +104,7 @@ def data_to_user(data):
     verify = bool(data.get('custom_verify').strip())
     verify_info = data.get('custom_verify').strip()
     return User(
-        id=id,
+        id=uid,
         alias=alias,
         name=name,
         sign=sign,
@@ -114,7 +114,7 @@ def data_to_user(data):
         verify_info=verify_info,
         create_time=create_time,
         birthday=birthday
-    ) if id else None
+    ) if uid else None
 
 
 def data_to_address(data):
@@ -123,7 +123,7 @@ def data_to_address(data):
     :param data:
     :return:
     """
-    id = data.get('poi_id')
+    aid = data.get('poi_id')
     address_info = data.get('address_info', {})
     province = address_info.get('province')
     city = address_info.get('city')
@@ -135,7 +135,7 @@ def data_to_address(data):
     latitude = data.get('latitude')
     place = data.get('poi_name')
     return Address(
-        id=id,
+        id=aid,
         province=province,
         city=city,
         district=district,
@@ -145,7 +145,7 @@ def data_to_address(data):
         longitude=longitude,
         latitude=latitude,
         place=place
-    ) if id else None
+    ) if aid else None
 
 
 def data_to_topic(data):
@@ -154,15 +154,15 @@ def data_to_topic(data):
     :param data:
     :return:
     """
-    id = data.get('cid')
+    tid = data.get('cid')
     view_count = data.get('view_count')
     user_count = data.get('user_count')
     name = data.get('cha_name')
     desc = data.get('desc')
     return Topic(
-        id=id,
+        id=tid,
         view_count=view_count,
         user_count=user_count,
         name=name,
         desc=desc
-    ) if id else None
+    ) if tid else None

@@ -1,12 +1,13 @@
 # urls
-hot_search_url = 'https://api.amemv.com/aweme/v1/hot/search/list/'
-hot_video_url = 'https://api.amemv.com/aweme/v1/hotsearch/aweme/billboard/'
-hot_energy_url = 'https://api.amemv.com/aweme/v1/hotsearch/positive_energy/billboard/'
-hot_music_url = 'https://api.amemv.com/aweme/v1/hotsearch/music/billboard/'
-hot_trend_url = 'https://api.amemv.com/aweme/v1/category/list/'
+hot_search_url = 'https://jokeai.zongcaihao.com/douyin/v292/hotsearch/word'
+hot_video_url = 'https://jokeai.zongcaihao.com/douyin/v292/hotsearch/aweme'
+hot_energy_url = 'https://jokeai.zongcaihao.com/douyin/v292/hotsearch/energy'
+hot_music_url = 'https://jokeai.zongcaihao.com/douyin/v292/search/music?keyword={}&cursor=0'
+hot_trend_url = 'https://jokeai.zongcaihao.com/douyin/v292/category/list?cursor=0'
 topic2video_url = 'https://api.amemv.com/aweme/v1/challenge/aweme/'
 music2video_url = 'https://api.amemv.com/aweme/v1/music/aweme/'
 
+# https://jokeai.zongcaihao.com/douyin/v292/
 # http
 fetch_timeout = 5
 common_headers = {

@@ -24,13 +24,13 @@ class Topic(Base):
         """
         return '<Topic: <%s, %s>>' % (self.id, self.name)
     
-    def videos(self, max=None):
+    def videos(self, max_count=None):
         """
         get videos of topic
         :return:
         """
         from douyin.utils.tranform import data_to_video
-        if max and not isinstance(max, int):
+        if max_count and not isinstance(max_count, int):
             raise RuntimeError('`max` param must be int')
         query = {
             'device_id': '58097798460',
@@ -48,7 +48,7 @@ class Topic(Base):
                 video = data_to_video(item)
                 count += 1
                 yield video
-                if max and count >= max:
+                if max_count and count >= max_count:
                     return
             # next page
             if result.get('has_more'):
